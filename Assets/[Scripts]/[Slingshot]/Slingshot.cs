@@ -10,6 +10,8 @@ public class Slingshot : MonoBehaviour
     public float lineAnchorOffset;
     public float lineMaxLength;
     public float maxMouseY;
+    public float forceMultiplier;
+    public float forceHeightOffset;
 
     private Vector3 mouseRotReference;
     // Start is called before the first frame update
@@ -39,7 +41,7 @@ public class Slingshot : MonoBehaviour
             var y = (Input.mousePosition.y - this.mouseRotReference.y);
             var mouseDiff = new Vector3(x, y, 0);
             // Only update slingshot if mouse moved from reference
-            if (x != 0 || y != 0) {
+            if (y < 0f) {
                 // Enable line renderer first time
                 if (!this.lineRenderer.enabled) {
                     this.lineRenderer.enabled = true;
@@ -61,6 +63,18 @@ public class Slingshot : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) {
             // Hide line renderer after click release
             this.lineRenderer.enabled = false;
+
+            // Get mouse diff vector vals
+            var x = -(Input.mousePosition.x - this.mouseRotReference.x);
+            var y = (Input.mousePosition.y - this.mouseRotReference.y);
+            var mouseDiff = new Vector3(x, y, 0);
+            // Apply force based on slingshot magnitude
+            if (y < 0f) {
+                this.diceTarget.GetComponent<Rigidbody>().AddForceAtPosition(this.mainCamera.transform.forward * Mathf.Clamp(-y / this.maxMouseY, 0f, 1f) * this.forceMultiplier,
+                    new Vector3(this.diceTarget.transform.position.x, this.diceTarget.transform.position.y + this.forceHeightOffset, this.diceTarget.transform.position.z),
+                    ForceMode.Impulse);
+                //this.diceTarget.GetComponent<Rigidbody>().AddForce(this.mainCamera.transform.forward * Mathf.Clamp(-y / this.maxMouseY, 0f, 1f) * this.forceMultiplier, ForceMode.Impulse);
+            }
         }
     }
 }
