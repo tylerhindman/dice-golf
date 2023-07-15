@@ -9,7 +9,6 @@ public class Slingshot : MonoBehaviour
     public GameObject diceTarget;
     public float lineAnchorOffset;
     public float lineMaxLength;
-    public float lineMouseSlingshotScale;
     public float maxMouseY;
 
     private Vector3 mouseRotReference;
@@ -27,37 +26,40 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Grab mouse reference point on left click
+        // Mouse down trigger
         if (Input.GetMouseButtonDown(0)) {
+            // Grab mouse reference point on left click
             this.mouseRotReference = Input.mousePosition;
         }
 
-        // When left click is held, rotate per reference
+        // Mouse held
         if (Input.GetMouseButton(0)) {
+            // Get mouse diff vector vals
             var x = -(Input.mousePosition.x - this.mouseRotReference.x);
             var y = (Input.mousePosition.y - this.mouseRotReference.y);
             var mouseDiff = new Vector3(x, y, 0);
+            // Only update slingshot if mouse moved from reference
             if (x != 0 || y != 0) {
+                // Enable line renderer first time
                 if (!this.lineRenderer.enabled) {
                     this.lineRenderer.enabled = true;
                 }
+                // Get new angle to rotate too based on main camera forward
                 var newArrowAngle = Mathf.Rad2Deg * Mathf.Atan2(mainCamera.transform.forward.x, mainCamera.transform.forward.z);
-                //var newArrowAngle = Mathf.Rad2Deg * Mathf.Atan2(mouseDiff.normalized.y, mouseDiff.normalized.x);
-                //newArrowAngle -= cameraForwardAngleFromTarget;
 
+                // Rotate slingshot based on new angle
                 transform.rotation = Quaternion.AngleAxis(newArrowAngle - 180f, Vector3.up);
                 transform.position = this.diceTarget.transform.position + Quaternion.AngleAxis(newArrowAngle - 90f, Vector3.up) * new Vector3(this.lineAnchorOffset, 0, 0);
 
+                // Update length of slingshot based on mouse y
                 var lineLength = Mathf.Lerp(this.lineRenderer.GetPosition(1).z, -this.lineMaxLength, -y / this.maxMouseY);
-                //var lineLength = Mathf.Clamp((-mouseDiff.magnitude * this.lineMouseSlingshotScale) + this.lineRenderer.GetPosition(1).z, -this.lineMaxLength, this.lineRenderer.GetPosition(1).z);
                 this.lineRenderer.SetPosition(0, new Vector3(this.lineRenderer.GetPosition(0).x, this.lineRenderer.GetPosition(0).y, lineLength));
-
-                Debug.Log("mouseY: " + y + "percentage: " + -y / this.maxMouseY);
             }
         }
 
-        // Click released
+        // Click released trigger
         if (Input.GetMouseButtonUp(0)) {
+            // Hide line renderer after click release
             this.lineRenderer.enabled = false;
         }
     }
