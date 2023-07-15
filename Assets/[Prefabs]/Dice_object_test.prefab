@@ -237,7 +237,52 @@ PrefabInstance:
     - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
         type: 3}
       propertyPath: m_Positions.Array.data[0].z
-      value: 0.6468648
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 31418
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.7764142
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.25206682
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824188, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
+      propertyPath: maxMouseY
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
         type: 3}
