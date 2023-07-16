@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int Rolls;
     private TurnStateMachine stateMachine;
     private List<GameManagerPlayerInfo> playerList = new List<GameManagerPlayerInfo>();
+    private List<GameObject> cameraList = new List<GameObject>();
     // This will be used later when we dynamically create players after character select screen
     //private List<PlayerCreateInfo> playerCreateList = new List<PlayerCreateInfo>();
     
@@ -39,8 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vector3 spawnPosition = new Vector3();
 
     [Header("Camera")]
-    [SerializeField] CinemachineFreeLook slingshotCam;
-    [SerializeField] CinemachineFreeLook rollingCam;
+    [SerializeField] GameObject cameraPrefab;
     
     void Awake()
     {
@@ -69,10 +69,66 @@ public class GameManager : MonoBehaviour
     }
 
     void Start() {
-        this.slingshotCam.LookAt = this.playerList[0].player.transform;
-        this.slingshotCam.Follow = this.playerList[0].player.transform;
-        this.rollingCam.LookAt = this.playerList[0].player.transform;
-        this.rollingCam.Follow = this.playerList[0].player.transform;
+        // Set first with main camera since we already have it
+        this.cameraList.Add(Camera.main.gameObject.transform.parent.gameObject);
+        this.playerList[0].player.transform.parent.GetComponentInChildren<Slingshot>().registerCamera(Camera.main);
+
+        // Instantiate, store ref
+        for (var i = 1; i < this.playerList.Count; i++) {
+            var newCamera = Instantiate(this.cameraPrefab, Vector3.zero, Quaternion.identity);
+            // Turn off player 1 layer mask
+            newCamera.GetComponentInChildren<Camera>().cullingMask &=  ~(1 << LayerMask.NameToLayer("Player1"));
+            // Turn on appropriate player layer mask
+            var layer = i == 1 ? LayerMask.NameToLayer("Player2") : (i == 2 ? LayerMask.NameToLayer("Player3") : LayerMask.NameToLayer("Player4"));
+            newCamera.GetComponentInChildren<Camera>().cullingMask |= 1 << layer;
+            this.cameraList.Add(newCamera);
+            this.playerList[i].player.transform.parent.GetComponentInChildren<Slingshot>().registerCamera(newCamera.GetComponentInChildren<Camera>());
+        }
+
+        // Set cineMachine lookAts for each player
+        for (var i = 0; i < this.cameraList.Count; i++) {
+            this.cameraList[i].GetComponentInChildren<CinemachineBrain>();
+            foreach (CinemachineFreeLook cine in this.cameraList[i].GetComponentsInChildren<CinemachineFreeLook>()) {
+                cine.LookAt = this.playerList[i].player.transform;
+                cine.Follow = this.playerList[i].player.transform;
+                switch (i) {
+                    case 0:
+                        cine.gameObject.layer = LayerMask.NameToLayer("Player1");
+                        break;
+                    case 1:
+                        cine.gameObject.layer = LayerMask.NameToLayer("Player2");
+                        break;
+                    case 2:
+                        cine.gameObject.layer = LayerMask.NameToLayer("Player3");
+                        break;
+                    case 3:
+                        cine.gameObject.layer = LayerMask.NameToLayer("Player4");
+                        break;
+                }
+            }
+        }
+
+        // For player count, set camera rects for splitscreen
+        switch(this.playerList.Count) {
+            case 1:
+                this.cameraList[0].GetComponentInChildren<Camera>().rect = new Rect(0, 0, 1, 1);
+                break;
+            case 2:
+                this.cameraList[0].GetComponentInChildren<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
+                this.cameraList[1].GetComponentInChildren<Camera>().rect = new Rect(0, 0, 1, 0.5f);
+                break;
+            case 3:
+                this.cameraList[0].GetComponentInChildren<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                this.cameraList[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                this.cameraList[2].GetComponentInChildren<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                break;
+            case 4:
+                this.cameraList[0].GetComponentInChildren<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                this.cameraList[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                this.cameraList[2].GetComponentInChildren<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                this.cameraList[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                break;
+        }
 
         this.stateMachine = FindObjectOfType<TurnStateMachine>();
         this.stateMachine.setNextState(TurnStateMachine.State.Chaos);

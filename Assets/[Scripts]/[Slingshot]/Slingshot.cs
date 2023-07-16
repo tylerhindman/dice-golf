@@ -24,8 +24,6 @@ public class Slingshot : MonoBehaviour
         this.lineRenderer = this.GetComponent<LineRenderer>();
         this.lineRenderer.enabled = false;
 
-        mainCamera = Camera.main;
-
         this.gameManager = FindObjectOfType<GameManager>();
         this.stateMachine = this.diceTarget.GetComponent<DiceStateMachine>();
     }
@@ -88,6 +86,10 @@ public class Slingshot : MonoBehaviour
                 this.stateMachine.setNextState(DiceStateMachine.State.Resolve);
             }
         }
+    }
+
+    public void registerCamera(Camera camera) {
+        this.mainCamera = camera;
     }
 
     IEnumerator rollDelay()
