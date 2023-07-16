@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // player data
     private int Score;
+    private int Rolls;
+
+    // UI hookups
+    [Header("UI Hookups")]
+    [SerializeField] TMP_Text currentDie;
+    [SerializeField] TMP_Text score;
+    [SerializeField] TMP_Text rollCount;
     
     void Awake()
     {
@@ -15,6 +24,9 @@ public class GameManager : MonoBehaviour
 
         // Clear the Player's Score
         Score = 0;
+
+        // Clear the Player's Rolls (Move Count)
+        Rolls = 0;
     }
 
     
@@ -42,5 +54,12 @@ public class GameManager : MonoBehaviour
         // public method to be called by level pickups that decrease score
 
         Score = Score - amount;
+    }
+
+    public void IncreaseRollCount()
+    {
+        // public method to be called when a player rolls
+        
+        Rolls++;
     }
 }
