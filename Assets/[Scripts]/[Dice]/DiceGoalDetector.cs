@@ -6,12 +6,14 @@ using UnityEngine;
 [Serializable]
 public class DiceGoalDetector : MonoBehaviour
 {
-    private TurnStateMachine stateMachine;
+    private DiceStateMachine stateMachine;
     private GameManager gameManager;
+    private PlayerInfo playerInfo;
     // Start is called before the first frame update
     void Start()
     {
-        this.stateMachine = FindObjectOfType<TurnStateMachine>();
+        this.stateMachine = this.GetComponent<DiceStateMachine>();
+        this.playerInfo = this.GetComponent<PlayerInfo>();
 
         this.gameManager = FindObjectOfType<GameManager>();
     }
@@ -25,7 +27,8 @@ public class DiceGoalDetector : MonoBehaviour
     void OnTriggerEnter(Collider collision) {
         if (collision.gameObject.name == "GoalVolume") {
             var goal = collision.gameObject;
-            this.stateMachine.setNextState(TurnStateMachine.State.Pocket);
+            this.stateMachine.setNextState(DiceStateMachine.State.Pocket);
+            this.gameManager.playerFinishedLevel(this.playerInfo.playerNumber);
         }
     }
 }

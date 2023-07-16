@@ -39638,6 +39638,25 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
+--- !u!1 &1443794439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6037433413384075077, guid: 848ac867a72028c47bf2f9ebf65f10a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 357130783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1443794446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443794439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272bd115f00451d44a4612bb8d68e73b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!43 &1489529553
 Mesh:
   m_ObjectHideFlags: 0
@@ -62544,6 +62563,8 @@ MonoBehaviour:
   spriteD10: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   spriteD12: {fileID: 21300000, guid: 6b44a7a9dc5cb2246891e6c930d25770, type: 3}
   spriteD20: {fileID: 21300000, guid: 02d69438bd0912c4a89a598ebf32184b, type: 3}
+  dicePrefabList: []
+  playerCreateList: []
 --- !u!1 &1926644596
 GameObject:
   m_ObjectHideFlags: 0

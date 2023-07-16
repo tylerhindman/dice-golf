@@ -8,77 +8,31 @@ public class TurnStateMachine : MonoBehaviour
 
     public enum State
     {
-        DiceSwap,
-        Slingshot,
-        Rolling,
-        Resolve,
-        Pocket,
-        PlayerSwitch,
+        Start,
+        Chaos,
         LevelEnd
     }
 
     public State state;
 
-    IEnumerator DiceSwapState()
+    IEnumerator StartState()
     {
-        Debug.Log("DiceSwap: Enter");
-        while (state == State.DiceSwap)
+        Debug.Log("Start: Enter");
+        while (state == State.Start)
         {
             yield return 0;
         }
-        Debug.Log("DiceSwap: Exit");
-        //NextState();
+        Debug.Log("Start: Exit");
     }
 
-    IEnumerator SlingshotState()
+    IEnumerator ChaosState()
     {
-        Debug.Log("Slingshot: Enter");
-        while (state == State.Slingshot)
+        Debug.Log("Chaos: Enter");
+        while (state == State.Chaos)
         {
             yield return 0;
         }
-        Debug.Log("Slingshot: Exit");
-        //NextState();
-    }
-
-    IEnumerator RollingState()
-    {
-        Debug.Log("Rolling: Enter");
-        while (state == State.Rolling)
-        {
-            yield return 0;
-        }
-        Debug.Log("Rolling: Exit");
-    }
-
-    IEnumerator ResolveState()
-    {
-        Debug.Log("Resolve: Enter");
-        while (state == State.Resolve)
-        {
-            yield return 0;
-        }
-        Debug.Log("Resolve: Exit");
-    }
-
-    IEnumerator PocketState()
-    {
-        Debug.Log("Pocket: Enter");
-        while (state == State.Pocket)
-        {
-            yield return 0;
-        }
-        Debug.Log("Pocket: Exit");
-    }
-
-    IEnumerator PlayerSwitchState()
-    {
-        Debug.Log("PlayerSwitch: Enter");
-        while (state == State.PlayerSwitch)
-        {
-            yield return 0;
-        }
-        Debug.Log("PlayerSwitch: Exit");
+        Debug.Log("Chaos: Exit");
     }
 
     IEnumerator LevelEndState()

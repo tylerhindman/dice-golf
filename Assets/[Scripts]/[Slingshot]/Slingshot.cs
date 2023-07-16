@@ -15,8 +15,7 @@ public class Slingshot : MonoBehaviour
 
     private float mouseYReference;
     private GameManager gameManager;
-    private TurnStateMachine stateMachine;
-    // Start is called before the first frame update
+    private DiceStateMachine stateMachine;
     private LineRenderer lineRenderer;
     private Camera mainCamera;
     private bool rollDelayFlag = false;
@@ -27,16 +26,14 @@ public class Slingshot : MonoBehaviour
 
         mainCamera = Camera.main;
 
-        this.stateMachine = FindObjectOfType<TurnStateMachine>();
-        this.stateMachine.registerInterestedParty(gameObject);
-
         this.gameManager = FindObjectOfType<GameManager>();
+        this.stateMachine = this.diceTarget.GetComponent<DiceStateMachine>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.stateMachine.state == TurnStateMachine.State.Slingshot) {
+        if (this.stateMachine.state == DiceStateMachine.State.Slingshot) {
             // Mouse down trigger
             if (Input.GetMouseButtonDown(0)) {
                 // Grab mouse reference point on left click
@@ -80,15 +77,15 @@ public class Slingshot : MonoBehaviour
                     this.diceTarget.GetComponent<Rigidbody>().AddForceAtPosition(this.mainCamera.transform.forward * Mathf.Clamp(-this.mouseYReference / this.maxMouseY, 0f, 1f) * this.forceMultiplier,
                         new Vector3(this.diceTarget.transform.position.x, this.diceTarget.transform.position.y + this.forceHeightOffset, this.diceTarget.transform.position.z),
                         ForceMode.Impulse);
-                    this.stateMachine.setNextState(TurnStateMachine.State.Rolling);
+                    this.stateMachine.setNextState(DiceStateMachine.State.Rolling);
                     StartCoroutine(rollDelay());
                 }
             }
-        } else if (this.stateMachine.state == TurnStateMachine.State.Rolling && this.rollDelayFlag) {
+        } else if (this.stateMachine.state == DiceStateMachine.State.Rolling && this.rollDelayFlag) {
             Debug.Log("velocityMag: " + this.diceTarget.GetComponent<Rigidbody>().velocity.magnitude);
             if (this.diceTarget.GetComponent<Rigidbody>().velocity.magnitude <= this.velocityStopThreshold) {
                 this.gameManager.IncreaseRollCount();
-                this.stateMachine.setNextState(TurnStateMachine.State.Slingshot);
+                this.stateMachine.setNextState(DiceStateMachine.State.Resolve);
             }
         }
     }

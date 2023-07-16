@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private int Score;
     private int Rolls;
     private TurnStateMachine stateMachine;
+    // This will be used later when we dynamically create players after character select screen
+    private List<GameManagerPlayerInfo> playerList = new List<GameManagerPlayerInfo>();
 
     // UI hookups
     [Header("UI Hookups")]
@@ -27,6 +29,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite spriteD10;
     [SerializeField] Sprite spriteD12;
     [SerializeField] Sprite spriteD20;
+
+    [Header("Player")]
+    [SerializeField] List<GameObject> dicePrefabList = new List<GameObject>();
+    [SerializeField] List<PlayerCreateInfo> playerCreateList = new List<PlayerCreateInfo>();
     
     void Awake()
     {
@@ -44,12 +50,15 @@ public class GameManager : MonoBehaviour
         //Set Default UI
         UICurrentDieImage.sprite = spriteD6;
         UICurrentDie.text = "Equipped: d6";
+
+        //foreach (PlayerCreateInfo playerCreateInfo in playerCreateList) {
+        //    Instantiate();
+        //}
     }
 
     void Start() {
-        this.stateMachine = FindObjectOfType<TurnStateMachine>();
+        this.stateMachine = FindObjectOfType<TurnStateMachine>();    
     }
-
     
     void Update()
     {
@@ -61,6 +70,24 @@ public class GameManager : MonoBehaviour
 
         // Update the UI every frame
         UpdateUI();
+    }
+
+    public void playerFinishedLevel(int playerIndex) {
+        // Set level finished flag for player index
+        this.playerList[playerIndex].levelFinished = true;
+
+        // Check if all players are finished, move to level end
+        var allPlayersFinished = true;
+        foreach (GameManagerPlayerInfo playerInfo in this.playerList) {
+            if (!playerInfo.levelFinished) {
+                allPlayersFinished = false;
+                break;
+            }
+        }
+
+        if (allPlayersFinished) {
+            this.stateMachine.setNextState(TurnStateMachine.State.LevelEnd);
+        }
     }
 
     public void UpdateUI()
