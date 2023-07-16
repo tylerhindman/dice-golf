@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -10,8 +11,10 @@ public class GameManager : MonoBehaviour
     private int Score;
     private int Rolls;
     private TurnStateMachine stateMachine;
-    // This will be used later when we dynamically create players after character select screen
     private List<GameManagerPlayerInfo> playerList = new List<GameManagerPlayerInfo>();
+    // This will be used later when we dynamically create players after character select screen
+    //private List<PlayerCreateInfo> playerCreateList = new List<PlayerCreateInfo>();
+    
 
     // UI hookups
     [Header("UI Hookups")]
@@ -32,7 +35,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] List<GameObject> dicePrefabList = new List<GameObject>();
-    [SerializeField] List<PlayerCreateInfo> playerCreateList = new List<PlayerCreateInfo>();
+    [SerializeField] List<DiceType> playerCreateList = new List<DiceType>();
+    [SerializeField] Vector3 spawnPosition = new Vector3();
+
+    [Header("Camera")]
+    [SerializeField] CinemachineFreeLook slingshotCam;
+    [SerializeField] CinemachineFreeLook rollingCam;
     
     void Awake()
     {
@@ -51,13 +59,23 @@ public class GameManager : MonoBehaviour
         UICurrentDieImage.sprite = spriteD6;
         UICurrentDie.text = "Equipped: d6";
 
-        //foreach (PlayerCreateInfo playerCreateInfo in playerCreateList) {
-        //    Instantiate();
-        //}
+        for (var i = 0; i < this.playerCreateList.Count; i++) {
+            var diceType = this.playerCreateList[i];
+            var newPlayer = Instantiate(this.dicePrefabList[(int)diceType], new Vector3(this.spawnPosition.x + (i * 3f), this.spawnPosition.y, this.spawnPosition.z), Quaternion.identity);
+            newPlayer = newPlayer.GetComponentInChildren<PlayerInfo>().gameObject;
+            newPlayer.GetComponent<PlayerInfo>().playerNumber = i;
+            this.playerList.Add(new GameManagerPlayerInfo(newPlayer));
+        }
     }
 
     void Start() {
-        this.stateMachine = FindObjectOfType<TurnStateMachine>();    
+        this.slingshotCam.LookAt = this.playerList[0].player.transform;
+        this.slingshotCam.Follow = this.playerList[0].player.transform;
+        this.rollingCam.LookAt = this.playerList[0].player.transform;
+        this.rollingCam.Follow = this.playerList[0].player.transform;
+
+        this.stateMachine = FindObjectOfType<TurnStateMachine>();
+        this.stateMachine.setNextState(TurnStateMachine.State.Chaos);
     }
     
     void Update()
