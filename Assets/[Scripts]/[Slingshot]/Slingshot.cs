@@ -1,5 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -73,7 +71,6 @@ public class Slingshot : MonoBehaviour
                 this.diceTarget.GetComponent<Rigidbody>().AddForceAtPosition(this.mainCamera.transform.forward * Mathf.Clamp(-y / this.maxMouseY, 0f, 1f) * this.forceMultiplier,
                     new Vector3(this.diceTarget.transform.position.x, this.diceTarget.transform.position.y + this.forceHeightOffset, this.diceTarget.transform.position.z),
                     ForceMode.Impulse);
-                //this.diceTarget.GetComponent<Rigidbody>().AddForce(this.mainCamera.transform.forward * Mathf.Clamp(-y / this.maxMouseY, 0f, 1f) * this.forceMultiplier, ForceMode.Impulse);
             }
         }
     }

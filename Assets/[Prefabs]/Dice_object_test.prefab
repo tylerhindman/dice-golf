@@ -44,8 +44,9 @@ GameObject:
   - component: {fileID: 6037433413384075073}
   - component: {fileID: 6037433413384075074}
   - component: {fileID: 6037433413384075075}
-  - component: {fileID: 6037433413384075076}
   - component: {fileID: 6037433413384075072}
+  - component: {fileID: 357211249}
+  - component: {fileID: 357211248}
   m_Layer: 0
   m_Name: Test Player Cube
   m_TagString: Untagged
@@ -75,7 +76,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6037433413384075077}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -4085365545091582050, guid: 37bce8c17c143a947808e575a2624b77, type: 3}
 --- !u!23 &6037433413384075075
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118,19 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6037433413384075076
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6037433413384075077}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6037433413384075072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -147,6 +135,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &357211249
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037433413384075077}
+  m_Material: {fileID: 13400000, guid: 4c24c62b80c71b440ac6fb34e73575bc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4085365545091582050, guid: 37bce8c17c143a947808e575a2624b77, type: 3}
+--- !u!114 &357211248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037433413384075077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30877eaa0eea1d439b999817b24be0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceModelList:
+  - {fileID: -1836475487350383904, guid: b952567953e2f094faf4cfc5d161a588, type: 3}
+  - {fileID: -4085365545091582050, guid: 37bce8c17c143a947808e575a2624b77, type: 3}
+  - {fileID: 6778648975707691970, guid: 24a14aaf3036bbe42b6f9017037de2c5, type: 3}
+  - {fileID: 8122746291248577681, guid: c05dd040b0c693041ac8938c070a8c76, type: 3}
+  - {fileID: 6297044225976434742, guid: e582b108de2688a4aac414be174521ab, type: 3}
+  - {fileID: 1013211498275616428, guid: 090f57bc829fa6d4290a2b43e55560ff, type: 3}
+  - {fileID: -6446311724128214590, guid: 130b76c2ac90386458b2a69420843410, type: 3}
 --- !u!1001 &6037433413301512228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,18 +333,23 @@ PrefabInstance:
       objectReference: {fileID: 6037433413384075077}
     - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
         type: 3}
+      propertyPath: lineMaxLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
+        type: 3}
       propertyPath: forceMultiplier
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
         type: 3}
       propertyPath: lineAnchorOffset
-      value: 0.9
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8986129661533824189, guid: c2a040129539f5045a6ad22a45f374a1,
         type: 3}
       propertyPath: forceHeightOffset
-      value: 0.03
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2a040129539f5045a6ad22a45f374a1, type: 3}
