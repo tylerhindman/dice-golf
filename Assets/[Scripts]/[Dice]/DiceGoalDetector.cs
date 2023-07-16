@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public class DiceGoalDetector : MonoBehaviour
 {
+    public TurnStateMachine stateMachine;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,11 @@ public class DiceGoalDetector : MonoBehaviour
     void OnTriggerEnter(Collider collision) {
         if (collision.gameObject.name == "GoalVolume") {
             var goal = collision.gameObject;
-            Debug.Log("GOAL!!!");
+            this.stateMachine.setNextState(TurnStateMachine.State.Pocket);
         }
+    }
+
+    void PocketState() {
+        Debug.Log("What the hell...time for a top up");
     }
 }

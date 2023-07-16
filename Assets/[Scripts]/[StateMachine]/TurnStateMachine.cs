@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurnStateMachine : MonoBehaviour
 {
+    public List<GameObject> interestedParties;
 
     public enum State
     {
@@ -26,7 +27,7 @@ public class TurnStateMachine : MonoBehaviour
             yield return 0;
         }
         Debug.Log("DiceSwap: Exit");
-        NextState();
+        //NextState();
     }
 
     IEnumerator SlingshotState()
@@ -37,7 +38,7 @@ public class TurnStateMachine : MonoBehaviour
             yield return 0;
         }
         Debug.Log("Slingshot: Exit");
-        NextState();
+        //NextState();
     }
 
     IEnumerator RollingState()
@@ -92,13 +93,20 @@ public class TurnStateMachine : MonoBehaviour
 
     void Start()
     {
-        NextState();
+        communicateState();
     }
 
-    void NextState()
+    void communicateState() {
+        foreach (GameObject obj in interestedParties) {
+            obj.SendMessage(this.state.ToString() + "State", SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    public void setNextState(State nextState)
     {
-        string methodName = state.ToString() + "State";
-        SendMessage(methodName);
+        this.state = nextState;
+        SendMessage(this.state.ToString() + "State");
+        this.communicateState();
     }
 
 }
