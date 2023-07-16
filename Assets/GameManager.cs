@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
 
         // Clear the Player's Rolls (Move Count)
         Rolls = 0;
+
+        //Set Default UI
+        UICurrentDie.text = "Equipped: d6";
     }
 
     
@@ -67,5 +70,20 @@ public class GameManager : MonoBehaviour
     {
         // public method to be called when a player rolls
         Rolls++;
+    }
+
+    public void UIDieSwap(int dieIndex)
+    {
+        if (dieIndex == -1) UICurrentDie.text = "Equipped: d6";
+        if (dieIndex == 0) UICurrentDie.text = "Equipped: d4";
+        if (dieIndex == 1) UICurrentDie.text = "Equipped: d6";
+        if (dieIndex == 2) UICurrentDie.text = "Equipped: d6b";
+        if (dieIndex == 3) UICurrentDie.text = "Equipped: d8";
+        if (dieIndex == 4) UICurrentDie.text = "Equipped: d10";
+        if (dieIndex == 5) UICurrentDie.text = "Equipped: d12";
+        if (dieIndex == 6) UICurrentDie.text = "Equipped: d20";
+
+
+
     }
 }
