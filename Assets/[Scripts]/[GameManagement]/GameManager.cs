@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // player data
     private int Score;
     private int Rolls;
+    private TurnStateMachine stateMachine;
 
     // UI hookups
     [Header("UI Hookups")]
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
 
         //Set Default UI
         UICurrentDie.text = "Equipped: d6";
+    }
+
+    void Start() {
+        this.stateMachine = FindObjectOfType<TurnStateMachine>();
     }
 
     
@@ -82,8 +87,5 @@ public class GameManager : MonoBehaviour
         if (dieIndex == 4) UICurrentDie.text = "Equipped: d10";
         if (dieIndex == 5) UICurrentDie.text = "Equipped: d12";
         if (dieIndex == 6) UICurrentDie.text = "Equipped: d20";
-
-
-
     }
 }

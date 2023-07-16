@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnStateMachine : MonoBehaviour
 {
-    public List<GameObject> interestedParties;
+    private List<GameObject> interestedParties = new List<GameObject>();
 
     public enum State
     {
@@ -107,6 +107,10 @@ public class TurnStateMachine : MonoBehaviour
         this.state = nextState;
         SendMessage(this.state.ToString() + "State");
         this.communicateState();
+    }
+
+    public void registerInterestedParty(GameObject obj) {
+        this.interestedParties.Add(obj);
     }
 
 }

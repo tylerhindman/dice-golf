@@ -6,11 +6,14 @@ using UnityEngine;
 [Serializable]
 public class DiceGoalDetector : MonoBehaviour
 {
-    public TurnStateMachine stateMachine;
+    private TurnStateMachine stateMachine;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        this.stateMachine = FindObjectOfType<TurnStateMachine>();
 
+        this.gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,9 +27,5 @@ public class DiceGoalDetector : MonoBehaviour
             var goal = collision.gameObject;
             this.stateMachine.setNextState(TurnStateMachine.State.Pocket);
         }
-    }
-
-    void PocketState() {
-        Debug.Log("What the hell...time for a top up");
     }
 }
