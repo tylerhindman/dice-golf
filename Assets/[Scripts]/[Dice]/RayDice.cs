@@ -78,7 +78,7 @@ public class RayDice : MonoBehaviour
             _hasLanded = true;
             _rb.isKinematic = true;
             _rb.useGravity = false;
-            GetDiceValue();
+            GetDiceValue(Raycast());
         }
         // If the dice stopped moving and is stuck, reroll the dice
         else if (_rb.IsSleeping() && _hasLanded && _diceValue == -1)
@@ -135,15 +135,11 @@ public class RayDice : MonoBehaviour
     // Testing different directions to set a value to the dice. Will return -1 if stuck
 
     // Could possibly make new dice with different values as long as I replace the dots on the dice relative to the new values
-    public int GetDiceValue()
+    public int GetDiceValue(int value)
     {
-        int iValue = -1;
-
-        iValue = Raycast();
-
         //Debug.Log("eulerAngles: " + dieRotation.x + ", " + dieRotation.y + ", " + dieRotation.z + " Value: " + iValue);
 
-        _diceValue = iValue;
+        _diceValue = value;
 
         DiceValueReturned?.Invoke(_diceValue, _mr.material.color);
 
@@ -158,13 +154,13 @@ public class RayDice : MonoBehaviour
 
         popup.transform.rotation = Quaternion.Euler(45, 0, 0);
 
-        popup.text.text = ("[<color=#" + ColorUtility.ToHtmlStringRGB(_mr.material.color) + ">" + iValue + "</color>]");
+        popup.text.text = ("[<color=#" + ColorUtility.ToHtmlStringRGB(_mr.material.color) + ">" + value + "</color>]");
         popup.text.color = Color.white;
         popup.text.outlineColor = Color.black;
 
         //AudioManager.Instance.PlaySound2D(_diceResolveSFX, .5f, UnityEngine.Random.Range(.8f,1.2f));
 
-        return (iValue);
+        return (value);
     }
 
     // If dice is out of bounds, reroll
@@ -210,10 +206,10 @@ public class RayDice : MonoBehaviour
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //test.transform.rotation = Quaternion.Euler(test.transform.rotation.x, test.transform.rotation.y, test.transform.rotation.z);
 
-                Debug.DrawRay(faceCentroid, faceNormal * 3, Color.red, 50f, true);
+                Debug.DrawRay(faceCentroid - (faceNormal * 0.1f), faceNormal * 3, Color.red, 50f, true);
 
                 RaycastHit hit;
-                if (Physics.Raycast(faceCentroid, faceNormal * 20, out hit))
+                if (Physics.Raycast(faceCentroid - (faceNormal * 0.1f), faceNormal * 20, out hit))
                 {
                     if (hit.collider.tag == "Ground")
                     {
@@ -224,12 +220,19 @@ public class RayDice : MonoBehaviour
                         {
                             shortestDistance = distanceToGround;
 
-                            Debug.Log("i: " + i + " --- " + "index: " + (float)(((i / 3f )  /2)) + 1);
-                            shortestDistanceIndex = ((int)(((i / 3f) ) / 2)) + 1; // Store the index of the raycast
+                            if (i == 0)
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + 1);
+                                shortestDistanceIndex = 1; // Store the index of the raycast
+                            }
+                            else
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + (float)((i / 6f) + 1));
+                                shortestDistanceIndex = (int)((i / 6f) + 1); // Store the index of the raycast
+                            }
                         }
                     }
                 }
-
                 i += 3;
             }
             // D12 because it has 3 triangles per face
@@ -257,12 +260,10 @@ public class RayDice : MonoBehaviour
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
 
-                i += 6;
-
-                Debug.DrawRay(faceCentroid, faceNormal * 3, Color.red, 50f, true);
+                Debug.DrawRay(faceCentroid - (faceNormal * 0.1f), faceNormal * 3, Color.red, 50f, true);
 
                 RaycastHit hit;
-                if (Physics.Raycast(faceCentroid, faceNormal * 3, out hit))
+                if (Physics.Raycast(faceCentroid - (faceNormal * 0.1f), faceNormal * 3, out hit))
                 {
                     if (hit.collider.tag == "Ground")
                     {
@@ -272,10 +273,20 @@ public class RayDice : MonoBehaviour
                         if (distanceToGround < shortestDistance)
                         {
                             shortestDistance = distanceToGround;
-                            shortestDistanceIndex = i / 3; // Store the index of the raycast
+                            if (i == 0)
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + 1);
+                                shortestDistanceIndex = 1; // Store the index of the raycast
+                            }
+                            else
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + (float)((i / 9f) + 1));
+                                shortestDistanceIndex = (int)((i / 9f) + 1); // Store the index of the raycast
+                            }
                         }
                     }
                 }
+                i += 6;
             }
             else
             {
@@ -295,10 +306,10 @@ public class RayDice : MonoBehaviour
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
 
-                Debug.DrawRay(faceCentroid, faceNormal * 3, Color.red, 50f, true);
+                Debug.DrawRay(faceCentroid - (faceNormal * 0.1f), faceNormal * 3, Color.red, 50f, true);
 
                 RaycastHit hit;
-                if (Physics.Raycast(faceCentroid, faceNormal * 3, out hit))
+                if (Physics.Raycast(faceCentroid - (faceNormal * 0.1f), faceNormal * 3, out hit))
                 {
                     if (hit.collider.tag == "Ground")
                     {
@@ -308,7 +319,18 @@ public class RayDice : MonoBehaviour
                         if (distanceToGround < shortestDistance)
                         {
                             shortestDistance = distanceToGround;
-                            shortestDistanceIndex = i / 3; // Store the index of the raycast
+
+                            if (i == 0)
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + 1);
+                                shortestDistanceIndex = 1; // Store the index of the raycast
+                            }
+                            else
+                            {
+                                Debug.Log("i: " + i + " --- " + "index: " + (float)((i / 3f) + 1));
+                                shortestDistanceIndex = ((i / 3) + 1); // Store the index of the raycast
+                            }
+                            
                         }
                     }
                 }
