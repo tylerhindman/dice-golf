@@ -23901,18 +23901,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &981901166 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 243734481224846743, guid: c1186f3aa73ed12468b71b4ccccf49b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 243734481115894521}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &987665580
 Mesh:
   m_ObjectHideFlags: 0
@@ -32907,18 +32895,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1293810903 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 243734482005306926, guid: c1186f3aa73ed12468b71b4ccccf49b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 243734481115894521}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1307704131
 Mesh:
   m_ObjectHideFlags: 0
@@ -71598,11 +71574,6 @@ PrefabInstance:
       objectReference: {fileID: 760033661}
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}
-      propertyPath: rollingCam
-      value: 
-      objectReference: {fileID: 1293810903}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
       propertyPath: UIRollCount
       value: 
       objectReference: {fileID: 1021054044}
@@ -71613,55 +71584,9 @@ PrefabInstance:
       objectReference: {fileID: 450907151}
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}
-      propertyPath: cameraPrefab
-      value: 
-      objectReference: {fileID: 243734482246979913, guid: c1186f3aa73ed12468b71b4ccccf49b8,
-        type: 3}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: slingshotCam
-      value: 
-      objectReference: {fileID: 981901166}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: spawnPosition.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: spawnPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
       propertyPath: UICurrentDieImage
       value: 
       objectReference: {fileID: 1211970535}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: playerCreateList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: playerCreateList.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: playerCreateList.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: playerCreateList.Array.data[2]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
-        type: 3}
-      propertyPath: playerCreateList.Array.data[3]
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af52749742daa0941912cbe0065fcbf0, type: 3}
 --- !u!1001 &8525252526566238839

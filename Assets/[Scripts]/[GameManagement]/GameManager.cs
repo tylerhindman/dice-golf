@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
             var diceType = this.playerCreateList[i];
             var newPlayer = Instantiate(this.dicePrefabList[(int)diceType], new Vector3(this.spawnPosition.x + (i * 3f), this.spawnPosition.y, this.spawnPosition.z), Quaternion.identity);
             newPlayer = newPlayer.GetComponentInChildren<PlayerInfo>().gameObject;
-            newPlayer.GetComponent<PlayerInfo>().playerNumber = i;
+            newPlayer.GetComponent<PlayerInfo>().PlayerNumber = i;
             this.playerList.Add(new GameManagerPlayerInfo(newPlayer));
         }
     }

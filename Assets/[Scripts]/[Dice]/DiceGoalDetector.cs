@@ -28,7 +28,7 @@ public class DiceGoalDetector : MonoBehaviour
         if (collision.gameObject.name == "GoalVolume") {
             var goal = collision.gameObject;
             this.stateMachine.setNextState(DiceStateMachine.State.Pocket);
-            this.gameManager.playerFinishedLevel(this.playerInfo.playerNumber);
+            this.gameManager.playerFinishedLevel(this.playerInfo.PlayerNumber);
         }
     }
 }

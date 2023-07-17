@@ -16,9 +16,11 @@ public class Slingshot : MonoBehaviour
     private float mouseYReference;
     private GameManager gameManager;
     private DiceStateMachine stateMachine;
+    private PlayerInfo playerInfo;
     private LineRenderer lineRenderer;
     private Camera mainCamera;
     private bool rollDelayFlag = false;
+    //private bool slingshotHeld = false;
     void Start()
     {
         this.lineRenderer = this.GetComponent<LineRenderer>();
@@ -26,23 +28,31 @@ public class Slingshot : MonoBehaviour
 
         this.gameManager = FindObjectOfType<GameManager>();
         this.stateMachine = this.diceTarget.GetComponent<DiceStateMachine>();
+
+        this.playerInfo = gameObject.transform.parent.GetComponentInChildren<PlayerInfo>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (this.stateMachine.state == DiceStateMachine.State.Slingshot) {
+            //Debug.Log("Player 1 button: " + Input.GetAxis(this.playerInfo.playerButtonAxis) + ", Player 1 stick: " + Input.GetAxis(this.playerInfo.playerStickAxis));
+
             // Mouse down trigger
             if (Input.GetMouseButtonDown(0)) {
+            //if (!this.slingshotHeld && Input.GetAxis(this.playerInfo.playerButtonAxis) == 1) {
                 // Grab mouse reference point on left click
                 this.mouseYReference = 0;
                 this.rollDelayFlag = false;
+                //this.slingshotHeld = true;
             }
 
             // Mouse held
             if (Input.GetMouseButton(0)) {
+            //if (this.slingshotHeld) {
                 // Get mouse diff vector vals
                 var mouseY = Input.GetAxis("Mouse Y");
+                //var mouseY = Input.GetAxis(this.playerInfo.playerStickAxis);
                 this.mouseYReference += mouseY;
                 // Only update slingshot if mouse moved from reference
                 if (this.mouseYReference < 0f) {
@@ -65,8 +75,10 @@ public class Slingshot : MonoBehaviour
 
             // Click released trigger
             if (Input.GetMouseButtonUp(0)) {
+            //if (this.slingshotHeld && Input.GetAxis(this.playerInfo.playerButtonAxis) == 0) {
                 // Hide line renderer after click release
                 this.lineRenderer.enabled = false;
+                //this.slingshotHeld = false;
 
                 // Get mouse diff vector vals
                 var mouseY = Input.GetAxis("Mouse Y");

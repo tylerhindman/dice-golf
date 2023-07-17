@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 7430277066471816002, guid: 1ea7a6d35dfb7604097097fa057c085a, type: 3}
   - {fileID: 693208841418594317, guid: ffe684a168e85654a95e609455fc5a5b, type: 3}
   - {fileID: 7074841470091321100, guid: 1962b928ec3ff7e468bc85f6936e7c02, type: 3}
-  playerCreateList: 01000000
-  spawnPosition: {x: 0, y: 0, z: 0}
-  slingshotCam: {fileID: 0}
-  rollingCam: {fileID: 0}
+  playerCreateList: 03000000
+  spawnPosition: {x: -5, y: 7, z: 0}
+  cameraPrefab: {fileID: 243734482246979913, guid: c1186f3aa73ed12468b71b4ccccf49b8,
+    type: 3}
