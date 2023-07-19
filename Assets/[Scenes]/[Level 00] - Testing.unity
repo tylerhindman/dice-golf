@@ -71587,6 +71587,67 @@ PrefabInstance:
       propertyPath: UICurrentDieImage
       value: 
       objectReference: {fileID: 1211970535}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[0]
+      value: 
+      objectReference: {fileID: 4319267481815066260, guid: 91d805fa2c3919f4a8223301ad9b63ba,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[1]
+      value: 
+      objectReference: {fileID: 5517244846279781983, guid: d8eb3f27d43fcf94786654ebfefc3380,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1966836389270119359, guid: 225e5fcc1f9b4e14bbda219a0299c1f3,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[3]
+      value: 
+      objectReference: {fileID: 355359156327289752, guid: 1ea7a6d35dfb7604097097fa057c085a,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[4]
+      value: 
+      objectReference: {fileID: 4672255155063925865, guid: ffe684a168e85654a95e609455fc5a5b,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: dicePrefabList.Array.data[5]
+      value: 
+      objectReference: {fileID: 8724888904437717814, guid: 1962b928ec3ff7e468bc85f6936e7c02,
+        type: 3}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af52749742daa0941912cbe0065fcbf0, type: 3}
 --- !u!1001 &8525252526566238839
