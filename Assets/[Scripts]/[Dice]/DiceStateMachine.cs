@@ -14,22 +14,28 @@ public class DiceStateMachine : MonoBehaviour
 
     public State state;
 
-    // Will be overwritten with Mikey's script later
-    void ResolveState()
-    {
-        this.state = State.Slingshot;
-    }
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         this.state = State.Slingshot;
+        this.gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    // Will be overwritten with Mikey's script later
+    void ResolveState()
+    {
+        // update roll count in Game Manager
+        this.gameManager.IncreaseRollCount();
+        
+        this.state = State.Slingshot;
     }
 
     public void setNextState(State nextState)

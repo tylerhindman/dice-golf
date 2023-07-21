@@ -227,6 +227,281 @@ PrefabInstance:
       propertyPath: diceTarget
       value: 
       objectReference: {fileID: 3886737888938694134}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: playerControls.m_Id
+      value: de5cf6ee-2c51-41a3-8f3e-3fe8bb2f499a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: playerControls.m_Name
+      value: Player Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Id
+      value: 32c5c9b4-2315-4973-ba6c-08a15ab9d84f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMousePull.m_Id
+      value: e2bcf873-68ab-49e4-8407-f7c1a705cad2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Name
+      value: Slingshot Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Id
+      value: 2815d8d4-152d-40df-93c6-fa1554dde7ae
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMousePull.m_Name
+      value: Slingshot Mouse Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotLineTrackingSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Name
+      value: Slingshot Mouse Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Bindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[0].m_Id
+      value: 00e30620-52aa-4048-950f-e30223f81dfb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[1].m_Id
+      value: 4f87c8d1-9cb3-48ea-8be9-1c941e4a1e10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[0].m_Id
+      value: 314b2c8d-25bb-44a8-8712-8c2957531af9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[1].m_Id
+      value: 215f6d63-1a69-46a2-885b-16d7b9a52358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[2].m_Id
+      value: fa92154c-330f-45bf-8200-35ee23ef9ff8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[3].m_Id
+      value: 89c15c82-c5bb-46c7-8d8b-712374783a5e
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[0].m_Name
+      value: Slingshot Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[0].m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[1].m_Name
+      value: Slingshot Pull Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[1].m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Actions.Array.data[0].m_Id
+      value: 1db5547c-18b7-4f35-abba-85295571e5e7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[0].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[1].m_Path
+      value: <Gamepad>/leftStick/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[2].m_Path
+      value: <Mouse>/leftButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[3].m_Path
+      value: <Gamepad>/rightTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Bindings.Array.data[0].m_Id
+      value: df48839d-969c-46bf-a34b-b1ef5f6f2768
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Actions.Array.data[0].m_Name
+      value: Slingshot Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Actions.Array.data[0].m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[0].m_Action
+      value: Slingshot Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[1].m_Action
+      value: Slingshot Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[2].m_Action
+      value: Slingshot Pull Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Bindings.Array.data[3].m_Action
+      value: Slingshot Pull Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Bindings.Array.data[0].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Bindings.Array.data[0].m_Action
+      value: Slingshot Pull
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[0].m_Id
+      value: dd3997db-d941-4047-b1a4-e43e65717632
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[1].m_Id
+      value: efc441fb-9813-4a44-b3af-752f7a800c37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[2].m_Id
+      value: b360602d-8db6-4774-9437-532364620f25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[0].m_ExpectedControlType
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_Actions.Array.data[1].m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[0].m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/delta/y
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[1].m_Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[1].m_Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[2].m_Name
+      value: positive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[0].m_Flags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[1].m_Flags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[2].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotMouseClick.m_Actions.Array.data[0].m_ExpectedControlType
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Slingshot Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Slingshot Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotControls.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Slingshot Controls
+      objectReference: {fileID: 0}
     - target: {fileID: 9127670193619952742, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
       propertyPath: m_RootOrder
@@ -290,3 +565,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8918625898554614326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5768485545265966987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3154934310155308477, guid: 1411f27867cafeb439976da07a90c658,
+    type: 3}
+  m_PrefabInstance: {fileID: 8918625898554614326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6365320472674672587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5768485545265966987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 72fde2021a7e6a845bbf0a9dd348255b,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Controller
+  m_DefaultActionMap: SlingshotControls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

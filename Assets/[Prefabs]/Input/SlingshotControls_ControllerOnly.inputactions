@@ -1,0 +1,86 @@
+{
+    "name": "SlingshotControls_ControllerOnly",
+    "maps": [
+        {
+            "name": "SlingshotControls",
+            "id": "4e761757-8af3-4722-b3ac-a40997a153dd",
+            "actions": [
+                {
+                    "name": "Slingshot Pull",
+                    "type": "PassThrough",
+                    "id": "0caf127a-0ef7-49ef-85f7-48f4ec5af691",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slingshot Pull Button",
+                    "type": "Button",
+                    "id": "67285fc7-8917-4ff1-8b2f-7c248c449b6d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slingshot Camera",
+                    "type": "Value",
+                    "id": "816d228b-50c0-4048-a432-fa29d52819ca",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "85e0c466-72c5-498e-bf61-18ceb0b886d7",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Slingshot Pull",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88d6df50-f654-465f-8a34-5bf985b58bb7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Slingshot Pull Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6b88825-53ea-4489-babe-2e1a07f17aaf",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slingshot Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

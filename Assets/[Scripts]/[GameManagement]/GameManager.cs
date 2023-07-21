@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
             foreach (CinemachineFreeLook cine in this.cameraList[i].GetComponentsInChildren<CinemachineFreeLook>()) {
                 cine.LookAt = this.playerList[i].player.transform;
                 cine.Follow = this.playerList[i].player.transform;
+                cine.gameObject.GetComponent<CinemachineInputProvider>().PlayerIndex = i;
                 switch (i) {
                     case 0:
                         cine.gameObject.layer = LayerMask.NameToLayer("Player1");
