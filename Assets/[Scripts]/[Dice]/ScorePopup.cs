@@ -22,7 +22,7 @@ public class ScorePopup : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+        transform.localPosition = new Vector3(transform.position.x, transform.position.y + 0.001f, transform.position.z);
         transform.localScale -= new Vector3(0.0005f, 0.0005f, 0.0005f);
         //text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 0.005f);
     }
