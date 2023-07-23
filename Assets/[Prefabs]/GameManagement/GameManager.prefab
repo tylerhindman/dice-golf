@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6114046314943635837}
   - component: {fileID: 6114046314943635838}
+  - component: {fileID: 1921396647}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -56,13 +57,80 @@ MonoBehaviour:
   spriteD12: {fileID: 21300000, guid: 6b44a7a9dc5cb2246891e6c930d25770, type: 3}
   spriteD20: {fileID: 21300000, guid: 02d69438bd0912c4a89a598ebf32184b, type: 3}
   dicePrefabList:
-  - {fileID: 8918625897574612729, guid: 792792af3049791459c8cdae7ee20f30, type: 3}
-  - {fileID: 8090723255256473933, guid: d8eb3f27d43fcf94786654ebfefc3380, type: 3}
-  - {fileID: 6984583832188640015, guid: 225e5fcc1f9b4e14bbda219a0299c1f3, type: 3}
-  - {fileID: 7430277066471816002, guid: 1ea7a6d35dfb7604097097fa057c085a, type: 3}
-  - {fileID: 693208841418594317, guid: ffe684a168e85654a95e609455fc5a5b, type: 3}
-  - {fileID: 7074841470091321100, guid: 1962b928ec3ff7e468bc85f6936e7c02, type: 3}
-  playerCreateList: 03000000
+  - {fileID: 4319267481815066260, guid: 91d805fa2c3919f4a8223301ad9b63ba, type: 3}
+  - {fileID: 5517244846279781983, guid: d8eb3f27d43fcf94786654ebfefc3380, type: 3}
+  - {fileID: 1966836389270119359, guid: 225e5fcc1f9b4e14bbda219a0299c1f3, type: 3}
+  - {fileID: 355359156327289752, guid: 1ea7a6d35dfb7604097097fa057c085a, type: 3}
+  - {fileID: 4672255155063925865, guid: ffe684a168e85654a95e609455fc5a5b, type: 3}
+  - {fileID: 8724888904437717814, guid: 1962b928ec3ff7e468bc85f6936e7c02, type: 3}
+  playerCreateList: 01000000
   spawnPosition: {x: -5, y: 7, z: 0}
   cameraPrefab: {fileID: 243734482246979913, guid: c1186f3aa73ed12468b71b4ccccf49b8,
     type: 3}
+  gameManagerControls:
+    m_Name: Game Manager Controls
+    m_Id: dee4673f-e9de-4949-9303-3e3b7872e203
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: Menu
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 85ea6dd5-3244-444c-8feb-508eeebc0d56
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Bindings:
+    - m_Name: 
+      m_Id: 6c547da7-dae7-4d88-b864-f2a788a147f8
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Menu
+      m_Flags: 0
+  debugEnabled: 0
+--- !u!114 &1921396647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114046314943635836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 0
+  m_MaxPlayerCount: 4
+  m_AllowJoining: 1
+  m_JoinBehavior: 2
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Join
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3b63b7d0-d5cc-4c39-b66b-7313270a7193
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 0}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 1
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
