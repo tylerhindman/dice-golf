@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1696653023}
   - component: {fileID: 2175349355407903799}
   - component: {fileID: 1440793551485706120}
+  - component: {fileID: 8869217985492528671}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -177,6 +178,23 @@ MonoBehaviour:
   - {fileID: 6297044225976434742, guid: e582b108de2688a4aac414be174521ab, type: 3}
   - {fileID: 1013211498275616428, guid: 090f57bc829fa6d4290a2b43e55560ff, type: 3}
   - {fileID: -6446311724128214590, guid: 130b76c2ac90386458b2a69420843410, type: 3}
+--- !u!114 &8869217985492528671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886737888938694134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df117638388dce419a88e0e2610deef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resolveParticles: {fileID: 8244829295365473348, guid: 8bd4dbd38b011dd49babb9c6e12d347d,
+    type: 3}
+  _resolvePopup: {fileID: 8392504496944969625, guid: 9f208a8e68d4bc54b8ed67e1fb0dd64f,
+    type: 3}
+  sphere: {fileID: 4960965537061920083, guid: 620f74991ea4ab746957cfb7cd215c09, type: 3}
 --- !u!1 &8918625897574612729
 GameObject:
   m_ObjectHideFlags: 0

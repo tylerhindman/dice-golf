@@ -15,12 +15,14 @@ public class DiceStateMachine : MonoBehaviour
     public State state;
 
     private GameManager gameManager;
+    private RayDice diceResolver;
 
     // Start is called before the first frame update
     void Start()
     {
         this.state = State.Slingshot;
         this.gameManager = FindObjectOfType<GameManager>();
+        this.diceResolver = FindObjectOfType<RayDice>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,10 @@ public class DiceStateMachine : MonoBehaviour
         this.gameManager.IncreaseRollCount();
         
         this.state = State.Slingshot;
+    }
+
+    void RollingState() {
+        this.diceResolver.RollDice();
     }
 
     public void setNextState(State nextState)
