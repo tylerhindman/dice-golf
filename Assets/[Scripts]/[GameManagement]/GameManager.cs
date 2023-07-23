@@ -42,11 +42,23 @@ public class GameManager : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] GameObject cameraPrefab;
+
+    [Header("Controls")]
+    [SerializeField] InputActionMap gameManagerControls;
+
+    [Header("Debug")]
+    [SerializeField] public bool debugEnabled;
+
+    void onEnable() {
+        this.gameManagerControls.Enable();
+    }
+
+    void onDisable() {
+        this.gameManagerControls.Disable();
+    }
     
     void Awake()
     {
-        // initialize
-
         // Lock the cursor to the screen
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -67,6 +79,12 @@ public class GameManager : MonoBehaviour
             newPlayer.GetComponent<PlayerInfo>().PlayerNumber = i;
             this.playerList.Add(new GameManagerPlayerInfo(newPlayer));
         }
+
+        // --------Controls
+        // Press Escape to toggle the cursor lock mode
+        this.gameManagerControls.FindAction("Menu").performed += ctx => {
+            this.updateMouseCursor();
+        };
     }
 
     void Start() {
@@ -138,14 +156,12 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        // Press Escape to toggle the cursor lock mode
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-        }
-
         // Update the UI every frame
         UpdateUI();
+    }
+
+    private void updateMouseCursor() {
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     public void playerFinishedLevel(int playerIndex) {
@@ -195,16 +211,7 @@ public class GameManager : MonoBehaviour
 
     public void UIDieSwap(int dieIndex)
     {
-        //D6 is the default starting position
-
-        if (dieIndex == -1)
-        {
-            UICurrentDie.text = "Equipped: d6";
-            UICurrentDieImage.sprite = spriteD6;
-        }
-
         //D4
-
         if (dieIndex == 0)
         {
             UICurrentDie.text = "Equipped: d4";
@@ -212,48 +219,35 @@ public class GameManager : MonoBehaviour
         }
 
         //D6
-
         if (dieIndex == 1)
         {
             UICurrentDie.text = "Equipped: d6";
             UICurrentDieImage.sprite = spriteD6;
         }
 
-        //D6  (beveled)
-
-        if (dieIndex == 2)
-        {
-            UICurrentDie.text = "Equipped: d6b";
-            UICurrentDieImage.sprite = spriteD6b;
-        }
-
         //D8
-
-        if (dieIndex == 3)
+        if (dieIndex == 2)
         {
             UICurrentDie.text = "Equipped: d8";
             UICurrentDieImage.sprite = spriteD8;
         }
 
         //D10
-
-        if (dieIndex == 4)
+        if (dieIndex == 3)
         {
             UICurrentDie.text = "Equipped: d10";
             UICurrentDieImage.sprite = spriteD10;
         }
 
         //D12
-
-        if (dieIndex == 5)
+        if (dieIndex == 4)
         {
             UICurrentDie.text = "Equipped: d12";
             UICurrentDieImage.sprite = spriteD12;
         }
 
         //D20
-
-        if (dieIndex == 6)
+        if (dieIndex == 5)
         {
             UICurrentDie.text = "Equipped: d20";
             UICurrentDieImage.sprite = spriteD20;

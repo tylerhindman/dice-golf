@@ -23,6 +23,7 @@ public class Slingshot : MonoBehaviour
     private Camera mainCamera;
     private PlayerInput slingshotControlManager;
     private InputActionMap slingshotControls;
+    private DiceModelSwap diceModelSwapComponent;
     private bool rollDelayFlag = false;
     private bool slingshotHeld = false;
     private float mouseYSum;
@@ -42,6 +43,8 @@ public class Slingshot : MonoBehaviour
         // Use this later to manually assign controllers??
         // this.slingshotControlManager.SwitchCurrentControlScheme();
 
+        this.diceModelSwapComponent = gameObject.transform.parent.GetComponentInChildren<DiceModelSwap>();
+
         // Slingshot button pressed
         this.slingshotControls.FindAction("Slingshot Pull Button").performed += ctx => {
             this.playerDevice = ctx.control.device.ToString().Contains("Mouse") ? "Mouse" : "Gamepad";
@@ -56,6 +59,20 @@ public class Slingshot : MonoBehaviour
             var button = (ButtonControl)ctx.control;
             if (!button.isPressed) {
                 this.slingshotButtonReleased();
+            }
+        };
+
+        // Dice Model Swap left button pressed
+        this.slingshotControls.FindAction("Dice Model Swap - Left").performed += ctx => {
+            if (this.gameManager.debugEnabled && this.diceModelSwapComponent != null) {
+                this.diceModelSwapComponent.swapLeft();
+            }
+        };
+
+        // Dice Model Swap right button pressed
+        this.slingshotControls.FindAction("Dice Model Swap - Right").performed += ctx => {
+            if (this.gameManager.debugEnabled && this.diceModelSwapComponent != null) {
+                this.diceModelSwapComponent.swapRight();
             }
         };
     }
