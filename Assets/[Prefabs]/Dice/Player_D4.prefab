@@ -13,6 +13,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1836475487350383904, guid: b952567953e2f094faf4cfc5d161a588,
         type: 3}
+    - target: {fileID: 3382357201645581347, guid: 792792af3049791459c8cdae7ee20f30,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cd3a3691094adc48bf8c5c5928ed468, type: 2}
+    - target: {fileID: 4084892558671484774, guid: 792792af3049791459c8cdae7ee20f30,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21476b73068015a448d196e83cd86689, type: 2}
     - target: {fileID: 8918625897574612728, guid: 792792af3049791459c8cdae7ee20f30,
         type: 3}
       propertyPath: m_RootOrder
@@ -71,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 8918625897574612729, guid: 792792af3049791459c8cdae7ee20f30,
         type: 3}
       propertyPath: m_Name
-      value: Player_D6_v
+      value: Player_D4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792792af3049791459c8cdae7ee20f30, type: 3}
