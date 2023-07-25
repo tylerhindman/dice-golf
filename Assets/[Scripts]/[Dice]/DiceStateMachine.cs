@@ -22,7 +22,7 @@ public class DiceStateMachine : MonoBehaviour
     {
         this.state = State.Slingshot;
         this.gameManager = FindObjectOfType<GameManager>();
-        this.diceResolver = FindObjectOfType<RayDice>();
+        this.diceResolver = GetComponent<RayDice>();
     }
 
     // Update is called once per frame
@@ -31,17 +31,18 @@ public class DiceStateMachine : MonoBehaviour
         
     }
 
-    // Will be overwritten with Mikey's script later
     void ResolveState()
     {
         // update roll count in Game Manager
         this.gameManager.IncreaseRollCount();
+
+        this.diceResolver.RollDice();
         
-        this.state = State.Slingshot;
+        this.setNextState(State.Slingshot);
     }
 
     void RollingState() {
-        this.diceResolver.RollDice();
+
     }
 
     public void setNextState(State nextState)

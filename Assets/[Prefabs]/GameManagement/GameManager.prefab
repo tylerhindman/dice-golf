@@ -89,7 +89,8 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Menu
       m_Flags: 0
-  debugEnabled: 0
+  debugDiceSwapEnabled: 1
+  debugRollDiceEnabled: 0
 --- !u!114 &1921396647
 MonoBehaviour:
   m_ObjectHideFlags: 0

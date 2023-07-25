@@ -32893,7 +32893,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29440
+  m_Name: pb_Mesh28900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -72117,16 +72117,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[CAMERA]'
       objectReference: {fileID: 0}
-    - target: {fileID: 243734482292978993, guid: c1186f3aa73ed12468b71b4ccccf49b8,
-        type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 243734482292979007, guid: c1186f3aa73ed12468b71b4ccccf49b8,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1186f3aa73ed12468b71b4ccccf49b8, type: 3}
 --- !u!1001 &2561211040222138824
@@ -72365,6 +72355,26 @@ PrefabInstance:
       propertyPath: UICurrentDieImage
       value: 
       objectReference: {fileID: 1211970535}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: debugDiceSwapEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: debugRollDiceEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
+        type: 3}
+      propertyPath: playerCreateList.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af52749742daa0941912cbe0065fcbf0, type: 3}
 --- !u!1001 &8525252526566238839

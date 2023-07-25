@@ -48,6 +48,9 @@ public class RayDice : MonoBehaviour
 
     DiceType diceType;
 
+    private Camera diceCamera;
+    private GameManager gameManager;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -111,6 +114,7 @@ public class RayDice : MonoBehaviour
 
     private void Start()
     {
+        this.gameManager = FindObjectOfType<GameManager>();
         //RollDice();
     }
 
@@ -210,7 +214,7 @@ public class RayDice : MonoBehaviour
 
         ScorePopup popup = Instantiate(_resolvePopup, pos, Quaternion.identity).GetComponent<ScorePopup>();
 
-        popup.transform.LookAt(Camera.main.transform.position);
+        popup.transform.LookAt(this.diceCamera.transform.position);
         popup.transform.Rotate(new Vector3(0,180,0));
 
         popup.text.text = ("[<color=#" + ColorUtility.ToHtmlStringRGB(_mr.material.color) + ">" + value + "</color>]");
@@ -261,6 +265,12 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2 + v3 + v4 + v5) / 6f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
 
                 RemoveSphere(test);
 
@@ -318,6 +328,15 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8) / 9f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
+
+                RemoveSphere(test);
+
                 test.name = ("Side" + ((i / 9f) + 1));
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
@@ -364,6 +383,15 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2) / 3f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
+                
+                RemoveSphere(test);
+
                 test.name = ("Side" + ((i / 3f) + 1));
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
@@ -440,6 +468,10 @@ public class RayDice : MonoBehaviour
                 return -1;
         }
 
+    }
+
+    private void registerCamera(Camera camera) {
+        this.diceCamera = camera;
     }
 
     void RemoveSphere(GameObject obj)

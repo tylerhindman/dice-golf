@@ -2,8 +2,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using Cinemachine;
 
-namespace Cinemachine
+namespace Dicegolf.Camera
 {
     /// <summary>
     /// This is an add-on to override the legacy input system and read input using the

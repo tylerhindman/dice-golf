@@ -64,14 +64,14 @@ public class Slingshot : MonoBehaviour
 
         // Dice Model Swap left button pressed
         this.slingshotControls.FindAction("Dice Model Swap - Left").performed += ctx => {
-            if (this.gameManager.debugEnabled && this.diceModelSwapComponent != null) {
+            if (this.gameManager.debugDiceSwapEnabled && this.diceModelSwapComponent != null) {
                 this.diceModelSwapComponent.swapLeft();
             }
         };
 
         // Dice Model Swap right button pressed
         this.slingshotControls.FindAction("Dice Model Swap - Right").performed += ctx => {
-            if (this.gameManager.debugEnabled && this.diceModelSwapComponent != null) {
+            if (this.gameManager.debugDiceSwapEnabled && this.diceModelSwapComponent != null) {
                 this.diceModelSwapComponent.swapRight();
             }
         };
