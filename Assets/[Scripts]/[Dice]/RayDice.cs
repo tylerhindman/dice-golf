@@ -77,35 +77,7 @@ public class RayDice : MonoBehaviour
         vertices = mesh.vertices;
         triangles = mesh.triangles;
 
-        switch(vertices.Length)
-        {
-            case 12:
-                diceType = DiceType.D4;
-                break;
-
-            case 24:
-                diceType = DiceType.D6;
-                break;
-
-            case 22:
-                diceType = DiceType.D8;
-                break;
-
-            case 40:
-                diceType = DiceType.D10;
-                break;
-
-            case 60:
-                if(triangles.Length == 108)
-                {
-                    diceType = DiceType.D12;
-                }
-                else if(triangles.Length == 60)
-                {
-                    diceType = DiceType.D20;
-                }
-                break;
-        }
+        DiceSwitch();
 
         //Debug.Log(gameObject.name + "   " + diceType);
         //Debug.Log(gameObject.name + "   " + vertices.Length);
@@ -125,6 +97,8 @@ public class RayDice : MonoBehaviour
         {
             RollDice();
         }*/
+
+        //Debug.Log(diceType);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -237,8 +211,9 @@ public class RayDice : MonoBehaviour
 
     private int Raycast()
     {
-      int shortestDistanceIndex = -1;
-      float shortestDistance = 1000;
+
+        int shortestDistanceIndex = -1;
+        float shortestDistance = 1000;
 
         // Perform a raycast from each face -- Find faces by getting vertices and creating triangles
         for (int i = 0; i < triangles.Length; i += 3)
@@ -477,6 +452,44 @@ public class RayDice : MonoBehaviour
     void RemoveSphere(GameObject obj)
     {
         Destroy(obj, 2f);
+    }
+
+    public void DiceSwitch()
+    {
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        mesh = meshFilter.sharedMesh;
+        vertices = mesh.vertices;
+        triangles = mesh.triangles;
+
+        switch (vertices.Length)
+        {
+            case 12:
+                diceType = DiceType.D4;
+                break;
+
+            case 24:
+                diceType = DiceType.D6;
+                break;
+
+            case 22:
+                diceType = DiceType.D8;
+                break;
+
+            case 40:
+                diceType = DiceType.D10;
+                break;
+
+            case 60:
+                if (triangles.Length == 108)
+                {
+                    diceType = DiceType.D12;
+                }
+                else if (triangles.Length == 60)
+                {
+                    diceType = DiceType.D20;
+                }
+                break;
+        }
     }
 }
 

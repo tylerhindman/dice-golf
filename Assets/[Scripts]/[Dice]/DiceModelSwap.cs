@@ -13,6 +13,8 @@ public class DiceModelSwap : MonoBehaviour
     private DiceStateMachine stateMachine;
     private int dieIndex = 0;
 
+    private RayDice rayDice;
+
     //TODO make a UI swap method in the GameManager script. call that method inside of here using the dieIndex as an argument 
 
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class DiceModelSwap : MonoBehaviour
     {
         this.stateMachine = this.GetComponent<DiceStateMachine>();
         this.gameManager = FindObjectOfType<GameManager>();
+        rayDice = GetComponent<RayDice>();
 
         // Determine base dieIndex
         for (var i = 0; i < this.diceModelList.Count; i++) {
@@ -56,6 +59,7 @@ public class DiceModelSwap : MonoBehaviour
         if (this.stateMachine.state == DiceStateMachine.State.Slingshot) {
             this.dieIndex = this.dieIndex != 0 ? this.dieIndex - 1 : this.diceModelList.Count - 1;
             this.swapModel();
+            rayDice.DiceSwitch();
         }
     }
 
@@ -63,6 +67,7 @@ public class DiceModelSwap : MonoBehaviour
         if (this.stateMachine.state == DiceStateMachine.State.Slingshot) {
             this.dieIndex = this.dieIndex != (this.diceModelList.Count - 1) ? this.dieIndex + 1 : 0;
             this.swapModel();
+            rayDice.DiceSwitch();
         }
     }
 }
