@@ -72368,12 +72368,12 @@ PrefabInstance:
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}
       propertyPath: playerCreateList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}
       propertyPath: playerCreateList.Array.data[1]
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af52749742daa0941912cbe0065fcbf0, type: 3}

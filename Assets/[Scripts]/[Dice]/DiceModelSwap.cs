@@ -7,6 +7,7 @@ using UnityEngine;
 public class DiceModelSwap : MonoBehaviour
 {
     public List<Mesh> diceModelList = new List<Mesh>();
+    public List<Material> diceMaterialList = new List<Material>();
 
     private GameManager gameManager;
     private DiceStateMachine stateMachine;
@@ -42,8 +43,10 @@ public class DiceModelSwap : MonoBehaviour
             this.gameObject.transform.position.y + 0.3f,
             this.gameObject.transform.position.z);
         var dieMesh = diceModelList[this.dieIndex];
+        var dieMaterial = diceMaterialList[this.dieIndex];
         this.GetComponent<MeshFilter>().mesh = dieMesh;
         this.GetComponent<MeshCollider>().sharedMesh = dieMesh;
+        this.GetComponent<MeshRenderer>().material = dieMaterial;
 
         //update UI
         gameManager.UIDieSwap(this.dieIndex);
