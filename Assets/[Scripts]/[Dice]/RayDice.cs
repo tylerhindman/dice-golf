@@ -48,12 +48,15 @@ public class RayDice : MonoBehaviour
 
     DiceType diceType;
 
+    private Camera diceCamera;
+    private GameManager gameManager;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _mr = GetComponent<MeshRenderer>();
-        initPosition = transform.position;
-        _rb.useGravity = false;
+        //initPosition = transform.position;
+        //_rb.useGravity = false;
 
         // Get the MeshFilter component and its shared mesh
         MeshFilter meshFilter = GetComponent<MeshFilter>();
@@ -111,6 +114,7 @@ public class RayDice : MonoBehaviour
 
     private void Start()
     {
+        this.gameManager = FindObjectOfType<GameManager>();
         //RollDice();
     }
 
@@ -133,15 +137,15 @@ public class RayDice : MonoBehaviour
         if (_rb.IsSleeping() && !_hasLanded && _thrown)
         {
             _hasLanded = true;
-            _rb.isKinematic = true;
-            _rb.useGravity = false;
+            //_rb.isKinematic = true;
+            //_rb.useGravity = false;
             GetDiceValue(Raycast());
         }
         // If the dice stopped moving and is stuck, reroll the dice
         else if (_rb.IsSleeping() && _hasLanded && _diceValue == -1)
         {
-            RollAgain();
-            Debug.Log("AHHHHHHHHHHHHHHHHHHHHH");
+            //RollAgain();
+            Debug.Log("ROLL AGAIN");
         }
     }
 
@@ -152,8 +156,8 @@ public class RayDice : MonoBehaviour
         if (!_thrown && !_hasLanded)
         {
             _thrown = true;
-            _rb.isKinematic = false;
-            _rb.useGravity = true;
+            //_rb.isKinematic = false;
+            //_rb.useGravity = true;
             //_rb.AddTorque(UnityEngine.Random.Range(0, 50), UnityEngine.Random.Range(0, 50), UnityEngine.Random.Range(0, 50));
             //_rb.AddForce(UnityEngine.Random.Range(-25, 25), 0, UnityEngine.Random.Range(10, 25));
 
@@ -161,6 +165,7 @@ public class RayDice : MonoBehaviour
         }
         else if (_thrown && _hasLanded)
         {
+            Debug.Log("DICE RESET");
             DiceReset();
         }
     }
@@ -168,16 +173,16 @@ public class RayDice : MonoBehaviour
     // Resets all transform and rigidbody values and bools of the dice
     void DiceReset()
     {
-        transform.position = initPosition;
-        transform.rotation = Quaternion.identity;
-        _rb.isKinematic = true;
+        //transform.position = initPosition;
+        //transform.rotation = Quaternion.identity;
+        //_rb.isKinematic = true;
         _thrown = false;
         _hasLanded = false;
-        _rb.useGravity = false;
+        //_rb.useGravity = false;
     }
 
     // Exact same as RollDice(), but runs DiceReset() first. Makes the reroll automatic for stuck dice
-    void RollAgain()
+/*    void RollAgain()
     {
         DiceReset();
         _thrown = true;
@@ -187,7 +192,7 @@ public class RayDice : MonoBehaviour
         _rb.AddForce(UnityEngine.Random.Range(-25, 25), 0, UnityEngine.Random.Range(10, 25));
 
         //AudioManager.Instance.PlaySound2D(_diceThrowSFX, .5f, UnityEngine.Random.Range(.8f, 1.2f));
-    }
+    }*/
 
     // Testing different directions to set a value to the dice. Will return -1 if stuck
 
@@ -200,7 +205,7 @@ public class RayDice : MonoBehaviour
 
         DiceValueReturned?.Invoke(_diceValue, _mr.material.color);
 
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
 
         ParticleSystem particles = Instantiate(_resolveParticles, transform.position, Quaternion.identity);
 
@@ -209,7 +214,8 @@ public class RayDice : MonoBehaviour
 
         ScorePopup popup = Instantiate(_resolvePopup, pos, Quaternion.identity).GetComponent<ScorePopup>();
 
-        popup.transform.rotation = Quaternion.Euler(45, 0, 0);
+        popup.transform.LookAt(this.diceCamera.transform.position);
+        popup.transform.Rotate(new Vector3(0,180,0));
 
         popup.text.text = ("[<color=#" + ColorUtility.ToHtmlStringRGB(_mr.material.color) + ">" + value + "</color>]");
         popup.text.color = Color.white;
@@ -221,13 +227,13 @@ public class RayDice : MonoBehaviour
     }
 
     // If dice is out of bounds, reroll
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         if (other.name == "FallZone")
         {
             RollAgain();
         }
-    }
+    }*/
 
     private int Raycast()
     {
@@ -259,6 +265,15 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2 + v3 + v4 + v5) / 6f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
+
+                RemoveSphere(test);
+
                 test.name = ("Side" + ((i / 6f) + 1));
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //test.transform.rotation = Quaternion.Euler(test.transform.rotation.x, test.transform.rotation.y, test.transform.rotation.z);
@@ -313,6 +328,15 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8) / 9f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
+
+                RemoveSphere(test);
+
                 test.name = ("Side" + ((i / 9f) + 1));
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
@@ -359,6 +383,15 @@ public class RayDice : MonoBehaviour
                 Vector3 faceCentroid = (v0 + v1 + v2) / 3f;
 
                 GameObject test = Instantiate(sphere, faceCentroid, Quaternion.identity);
+                // Enable rendering of sphere objects only if debugRollDiceEnabled is checked
+                if (!(this.gameManager?.debugRollDiceEnabled ?? false)) {
+                    foreach (MeshRenderer sphereRenderer in test.GetComponentsInChildren<MeshRenderer>()) {
+                        sphereRenderer.enabled = false;
+                    }
+                }
+                
+                RemoveSphere(test);
+
                 test.name = ("Side" + ((i / 3f) + 1));
                 test.transform.LookAt(faceCentroid + faceNormal * 50);
                 //Quaternion.LookRotation(faceCentroid, faceNormal);
@@ -394,7 +427,9 @@ public class RayDice : MonoBehaviour
 
             }
         }
-        
+
+        //Debug.Log(shortestDistanceIndex);
+        DiceReset();
         return AttachPattern(shortestDistanceIndex);
 
     }
@@ -433,6 +468,15 @@ public class RayDice : MonoBehaviour
                 return -1;
         }
 
+    }
+
+    private void registerCamera(Camera camera) {
+        this.diceCamera = camera;
+    }
+
+    void RemoveSphere(GameObject obj)
+    {
+        Destroy(obj, 2f);
     }
 }
 

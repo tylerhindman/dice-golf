@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputActionMap gameManagerControls;
 
     [Header("Debug")]
-    [SerializeField] public bool debugEnabled;
+    [SerializeField] public bool debugDiceSwapEnabled;
+    [SerializeField] public bool debugRollDiceEnabled;
 
     void onEnable() {
         this.gameManagerControls.Enable();
@@ -90,7 +91,8 @@ public class GameManager : MonoBehaviour
     void Start() {
         // Set first with main camera since we already have it
         this.cameraList.Add(Camera.main.gameObject.transform.parent.gameObject);
-        this.playerList[0].player.transform.parent.GetComponentInChildren<Slingshot>().registerCamera(Camera.main);
+        //this.playerList[0].player.transform.parent.GetComponentInChildren<Slingshot>().registerCamera(Camera.main);
+        this.playerList[0].player.transform.parent.BroadcastMessage("registerCamera", Camera.main, SendMessageOptions.DontRequireReceiver);
 
         // Instantiate, store ref
         for (var i = 1; i < this.playerList.Count; i++) {
@@ -101,7 +103,7 @@ public class GameManager : MonoBehaviour
             var layer = i == 1 ? LayerMask.NameToLayer("Player2") : (i == 2 ? LayerMask.NameToLayer("Player3") : LayerMask.NameToLayer("Player4"));
             newCamera.GetComponentInChildren<Camera>().cullingMask |= 1 << layer;
             this.cameraList.Add(newCamera);
-            this.playerList[i].player.transform.parent.GetComponentInChildren<Slingshot>().registerCamera(newCamera.GetComponentInChildren<Camera>());
+            this.playerList[i].player.transform.parent.BroadcastMessage("registerCamera", newCamera.GetComponentInChildren<Camera>(), SendMessageOptions.DontRequireReceiver);
         }
 
         // Set cineMachine lookAts for each player
@@ -110,7 +112,7 @@ public class GameManager : MonoBehaviour
             foreach (CinemachineFreeLook cine in this.cameraList[i].GetComponentsInChildren<CinemachineFreeLook>()) {
                 cine.LookAt = this.playerList[i].player.transform;
                 cine.Follow = this.playerList[i].player.transform;
-                cine.gameObject.GetComponent<CinemachineInputProvider>().PlayerIndex = i;
+                cine.gameObject.GetComponent<Dicegolf.Camera.CinemachineInputProvider>().PlayerIndex = i;
                 switch (i) {
                     case 0:
                         cine.gameObject.layer = LayerMask.NameToLayer("Player1");
