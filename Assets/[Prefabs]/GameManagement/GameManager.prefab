@@ -64,6 +64,13 @@ MonoBehaviour:
   - {fileID: 4672255155063925865, guid: ffe684a168e85654a95e609455fc5a5b, type: 3}
   - {fileID: 8724888904437717814, guid: 1962b928ec3ff7e468bc85f6936e7c02, type: 3}
   playerCreateList: 01000000
+  dicePropertiesList:
+  - {fileID: 11400000, guid: 687e902358c824142acbb74952159ec4, type: 2}
+  - {fileID: 11400000, guid: 37f432fe93dae2d4ab96898b653e72a8, type: 2}
+  - {fileID: 11400000, guid: 17e246d5fe2865341bbb9af3d386b0ce, type: 2}
+  - {fileID: 11400000, guid: 276e91fcf0e47a24480d99560750741f, type: 2}
+  - {fileID: 11400000, guid: d6b7a22ed0a06e44d9dd6787b981fe02, type: 2}
+  - {fileID: 11400000, guid: 931ea720348be0144bf2f95b77ecf066, type: 2}
   spawnPosition: {x: -5, y: 7, z: 0}
   cameraPrefab: {fileID: 243734482246979913, guid: c1186f3aa73ed12468b71b4ccccf49b8,
     type: 3}
@@ -91,6 +98,7 @@ MonoBehaviour:
       m_Flags: 0
   debugDiceSwapEnabled: 1
   debugRollDiceEnabled: 0
+  debugDiceSpinAnimationEnabled: 1
 --- !u!114 &1921396647
 MonoBehaviour:
   m_ObjectHideFlags: 0
