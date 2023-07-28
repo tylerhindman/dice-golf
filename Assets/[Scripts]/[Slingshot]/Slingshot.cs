@@ -7,15 +7,14 @@ using UnityEngine.InputSystem.Controls;
 [Serializable]
 public class Slingshot : MonoBehaviour
 {
+    [Header("Gameobject Props")]
     public GameObject diceTarget;
+    [Header("Visuals/Controls")]
     public float lineAnchorOffset;
     public float lineMaxLength;
     public float maxMouseY;
-    public float forceMultiplier;
-    public float forceHeightOffset;
-    public float velocityStopThreshold;
-    public float slingshotLineTrackingSpeed;
 
+    // Object refs
     private GameManager gameManager;
     private DiceStateMachine stateMachine;
     private PlayerInfo playerInfo;
@@ -24,10 +23,27 @@ public class Slingshot : MonoBehaviour
     private PlayerInput slingshotControlManager;
     private InputActionMap slingshotControls;
     private DiceModelSwap diceModelSwapComponent;
+    private Rigidbody rb;
+    // Flags
     private bool rollDelayFlag = false;
     private bool slingshotHeld = false;
+    // Slingshot controls
     private float mouseYSum;
     private string playerDevice;
+    // Animation
+    private float diceTargetStartingY;
+    private Vector3 randomRotation;
+
+    // Props set from DiceProperties
+    private float forceMultiplier;
+    private float forceHeightOffsetBase;
+    private float forceHeightOffsetMax;
+    private float velocityStopThreshold;
+    private float slingshotRisingAnimationEndPercentage;
+    private float slingshotRisingAnimationMaxHeight;
+    private float slingshotRollingAnimationStartPercentage;
+    private float slingshotRollingAnimationMaxSpeed;
+
 
     void Start()
     {
@@ -39,6 +55,7 @@ public class Slingshot : MonoBehaviour
 
         this.playerInfo = gameObject.transform.parent.GetComponentInChildren<PlayerInfo>();
         this.slingshotControlManager = this.GetComponent<PlayerInput>();
+        this.rb = this.diceTarget.GetComponent<Rigidbody>();
         this.slingshotControls = this.slingshotControlManager.currentActionMap;
         // Use this later to manually assign controllers??
         // this.slingshotControlManager.SwitchCurrentControlScheme();
@@ -80,18 +97,20 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("New Input system Y Delta: " + this.slingshotControls.FindAction("Slingshot Pull").ReadValue<float>());
         if (this.stateMachine.state == DiceStateMachine.State.Slingshot) {
             // Mouse held
             if (this.slingshotHeld) {
                 // Get mouse diff vector vals
                 var mouseY = this.slingshotControls.FindAction("Slingshot Pull").ReadValue<float>();
+                var mouseYDiffThisFrame = 0.0f;
                 // Mouse
                 if (this.playerDevice == "Mouse") {
                     mouseY /= this.maxMouseY;
+                    mouseYDiffThisFrame = Mathf.Clamp(-mouseY, -1.0f, 1.0f);
                     this.mouseYSum = Mathf.Clamp(this.mouseYSum + mouseY, -1f, 0f);
                 // Gamepad
                 } else {
+                    mouseYDiffThisFrame = Mathf.Clamp((-this.mouseYSum) + mouseY, -1.0f, 1.0f);
                     this.mouseYSum = Mathf.Clamp(mouseY, -1f, 0f);
                 }
                 // Only update slingshot if mouse moved from reference
@@ -110,10 +129,39 @@ public class Slingshot : MonoBehaviour
                     // Update length of slingshot based on mouse y
                     var lineLength = Mathf.Lerp(this.lineRenderer.GetPosition(1).z, -this.lineMaxLength, -this.mouseYSum);
                     this.lineRenderer.SetPosition(0, new Vector3(this.lineRenderer.GetPosition(0).x, this.lineRenderer.GetPosition(0).y, lineLength));
+
+                    if (this.gameManager.debugDiceSpinAnimationEnabled) {
+                        // Rising animation
+                        var newRisingPos = new Vector3(
+                            this.rb.position.x,
+                            Mathf.Lerp(this.diceTargetStartingY, this.diceTargetStartingY + this.slingshotRisingAnimationMaxHeight,
+                                Mathf.Clamp(-this.mouseYSum / this.slingshotRisingAnimationEndPercentage, 0.0f, 1.0f)
+                            ),
+                            this.rb.position.z
+                        );
+                        this.diceTarget.transform.position = newRisingPos;
+                        this.rb.position = newRisingPos;
+
+                        // Rotating animation
+                        if (mouseYDiffThisFrame != 0.0f && this.mouseYSum != 0.0f) {
+                            this.rb.AddRelativeTorque(new Vector3(
+                                    this.randomRotation.x * mouseYDiffThisFrame,
+                                    this.randomRotation.y * mouseYDiffThisFrame,
+                                    this.randomRotation.z * mouseYDiffThisFrame
+                                ),
+                                ForceMode.VelocityChange
+                            );
+                        }
+                    }
                 }
+
+                // Debug draw camera ray
+                Debug.DrawRay(this.rb.position, new Vector3(this.mainCamera.transform.forward.x,
+                        this.forceHeightOffsetBase + Mathf.Lerp(0.0f, this.forceHeightOffsetMax, Mathf.Clamp(1.0f - (-this.mouseYSum), 0.0f, 1.0f)), // The less force, the greater angle up
+                        this.mainCamera.transform.forward.z), Color.red, 0.3f, true);
             }
         } else if (this.stateMachine.state == DiceStateMachine.State.Rolling && this.rollDelayFlag) {
-            if (this.diceTarget.GetComponent<Rigidbody>().velocity.magnitude <= this.velocityStopThreshold) {
+            if (this.rb.velocity.magnitude <= this.velocityStopThreshold) {
                 this.stateMachine.setNextState(DiceStateMachine.State.Resolve);
             }
         }
@@ -121,6 +169,17 @@ public class Slingshot : MonoBehaviour
 
     public void registerCamera(Camera camera) {
         this.mainCamera = camera;
+    }
+
+    public void setDiceProperties(DicePropertiesScriptableObject diceProperties) {
+        this.forceMultiplier = diceProperties.forceMultiplier;
+        this.forceHeightOffsetBase = diceProperties.forceHeightOffsetBase;
+        this.forceHeightOffsetMax = diceProperties.forceHeightOffsetMax;
+        this.velocityStopThreshold = diceProperties.velocityStopThreshold;
+        this.slingshotRisingAnimationEndPercentage = diceProperties.slingshotRisingAnimationEndPercentage;
+        this.slingshotRisingAnimationMaxHeight = diceProperties.slingshotRisingAnimationMaxHeight;
+        this.slingshotRollingAnimationStartPercentage = diceProperties.slingshotRollingAnimationStartPercentage;
+        this.slingshotRollingAnimationMaxSpeed = diceProperties.slingshotRollingAnimationMaxSpeed;
     }
 
     IEnumerator rollDelay()
@@ -144,6 +203,13 @@ public class Slingshot : MonoBehaviour
             this.slingshotHeld = true;
             this.mouseYSum = 0;
             this.rollDelayFlag = false;
+            if (this.gameManager.debugDiceSpinAnimationEnabled) {
+                this.diceTargetStartingY = this.rb.position.y;
+                this.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                this.rb.maxAngularVelocity = this.slingshotRollingAnimationMaxSpeed;
+                this.rb.useGravity = false; // Turn off gravity because it accumulates while held in the air
+                this.setRandomRotation();
+            }
         }
     }
 
@@ -152,15 +218,38 @@ public class Slingshot : MonoBehaviour
             // Hide line renderer after click release
             this.lineRenderer.enabled = false;
             this.slingshotHeld = false;
+            if (this.gameManager.debugDiceSpinAnimationEnabled) {
+                this.rb.constraints = RigidbodyConstraints.None;
+                this.rb.maxAngularVelocity = 7; // default
+                this.rb.useGravity = true; // Need this bad boy again
+            }
 
             // Apply force based on slingshot magnitude
             if (this.mouseYSum < 0f) {
-                this.diceTarget.GetComponent<Rigidbody>().AddForceAtPosition(this.mainCamera.transform.forward * Mathf.Clamp(-this.mouseYSum, 0f, 1f) * this.forceMultiplier,
-                    new Vector3(this.diceTarget.transform.position.x, this.diceTarget.transform.position.y + this.forceHeightOffset, this.diceTarget.transform.position.z),
+                var forceY = 0.0f;
+                if (this.gameManager.debugDiceSpinAnimationEnabled) {
+                    forceY = this.forceHeightOffsetBase + Mathf.Lerp(0.0f, this.forceHeightOffsetMax, Mathf.Clamp(1.0f - (-this.mouseYSum), 0.0f, 1.0f));
+                }
+                this.rb.AddForceAtPosition(
+                    new Vector3(
+                        this.mainCamera.transform.forward.x,
+                        forceY, // The less force, the greater angle up
+                        this.mainCamera.transform.forward.z
+                    ) * Mathf.Clamp(-this.mouseYSum, 0f, 1f) * this.forceMultiplier,
+                    new Vector3(this.rb.position.x, this.rb.position.y + (this.gameManager.debugDiceSpinAnimationEnabled ? 0.0f : 0.15f), this.rb.position.z),
                     ForceMode.Impulse);
                 this.stateMachine.setNextState(DiceStateMachine.State.Rolling);
                 StartCoroutine(rollDelay());
             }
         }
     }
+
+    void setRandomRotation() {
+        this.randomRotation = new Vector3(
+                UnityEngine.Random.Range(-this.slingshotRollingAnimationMaxSpeed, this.slingshotRollingAnimationMaxSpeed),
+                UnityEngine.Random.Range(-this.slingshotRollingAnimationMaxSpeed, this.slingshotRollingAnimationMaxSpeed),
+                UnityEngine.Random.Range(-this.slingshotRollingAnimationMaxSpeed, this.slingshotRollingAnimationMaxSpeed)
+            );
+    }
+
 }

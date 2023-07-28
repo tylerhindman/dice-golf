@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e6bf638c175876040a0136d79e7df584, type: 2}
+    - target: {fileID: 4084892558671484775, guid: 792792af3049791459c8cdae7ee20f30,
+        type: 3}
+      propertyPath: slingshotRollingAnimationMaxSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4290185874996714394, guid: 792792af3049791459c8cdae7ee20f30,
         type: 3}
       propertyPath: m_Mesh

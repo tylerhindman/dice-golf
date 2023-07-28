@@ -51,6 +51,8 @@ public class DiceModelSwap : MonoBehaviour
         this.GetComponent<MeshCollider>().sharedMesh = dieMesh;
         this.GetComponent<MeshRenderer>().material = dieMaterial;
 
+        this.transform.parent.GetComponentInChildren<Slingshot>().setDiceProperties(this.gameManager.dicePropertiesList[this.dieIndex]);
+
         //update UI
         gameManager.UIDieSwap(this.dieIndex);
     }

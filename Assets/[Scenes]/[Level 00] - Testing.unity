@@ -72368,7 +72368,7 @@ PrefabInstance:
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}
       propertyPath: playerCreateList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6114046314943635838, guid: af52749742daa0941912cbe0065fcbf0,
         type: 3}

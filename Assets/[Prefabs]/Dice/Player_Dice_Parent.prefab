@@ -247,6 +247,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slingshot Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241296, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
       propertyPath: diceTarget
@@ -254,8 +259,28 @@ PrefabInstance:
       objectReference: {fileID: 3886737888938694134}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
+      propertyPath: forceMultiplier
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: forceHeightOffset
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
       propertyPath: playerControls.m_Id
       value: de5cf6ee-2c51-41a3-8f3e-3fe8bb2f499a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: forceHeightOffsetMax
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: forceHeightOffsetBase
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
@@ -271,6 +296,16 @@ PrefabInstance:
         type: 3}
       propertyPath: slingshotMousePull.m_Id
       value: e2bcf873-68ab-49e4-8407-f7c1a705cad2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotRollingMaxSpin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotRollingMinSpin
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
@@ -299,6 +334,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
+      propertyPath: slingshotRisingAnimationMaxHeight
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotRollingAnimationMaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotRisingAnimationEndPercentage
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
       propertyPath: slingshotControls.m_Actions.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -314,8 +364,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}
+      propertyPath: slingshotRollingAnimationStartPercentage
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
       propertyPath: slingshotMouseClick.m_Bindings.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
+        type: 3}
+      propertyPath: slingshotRollingAnimationDirectionChangeTimer
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4860834407427241297, guid: 1411f27867cafeb439976da07a90c658,
         type: 3}

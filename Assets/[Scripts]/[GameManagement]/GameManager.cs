@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] List<GameObject> dicePrefabList = new List<GameObject>();
     [SerializeField] List<DiceType> playerCreateList = new List<DiceType>();
+    [SerializeField] public List<DicePropertiesScriptableObject> dicePropertiesList = new List<DicePropertiesScriptableObject>();
     [SerializeField] Vector3 spawnPosition = new Vector3();
 
     [Header("Camera")]
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     [Header("Debug")]
     [SerializeField] public bool debugDiceSwapEnabled;
     [SerializeField] public bool debugRollDiceEnabled;
+    [SerializeField] public bool debugDiceSpinAnimationEnabled;
 
     void onEnable() {
         this.gameManagerControls.Enable();
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
         for (var i = 0; i < this.playerCreateList.Count; i++) {
             var diceType = this.playerCreateList[i];
             var newPlayer = Instantiate(this.dicePrefabList[(int)diceType], new Vector3(this.spawnPosition.x + (i * 3f), this.spawnPosition.y, this.spawnPosition.z), Quaternion.identity);
+            newPlayer.GetComponentInChildren<Slingshot>().setDiceProperties(this.dicePropertiesList[(int)diceType]);
             newPlayer = newPlayer.GetComponentInChildren<PlayerInfo>().gameObject;
             newPlayer.GetComponent<PlayerInfo>().PlayerNumber = i;
             this.playerList.Add(new GameManagerPlayerInfo(newPlayer));

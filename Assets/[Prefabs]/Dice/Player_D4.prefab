@@ -23,6 +23,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 21476b73068015a448d196e83cd86689, type: 2}
+    - target: {fileID: 4084892558671484775, guid: 792792af3049791459c8cdae7ee20f30,
+        type: 3}
+      propertyPath: slingshotRisingAnimationMaxHeight
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084892558671484775, guid: 792792af3049791459c8cdae7ee20f30,
+        type: 3}
+      propertyPath: slingshotRollingAnimationMaxSpeed
+      value: 28
+      objectReference: {fileID: 0}
     - target: {fileID: 8918625897574612728, guid: 792792af3049791459c8cdae7ee20f30,
         type: 3}
       propertyPath: m_RootOrder
